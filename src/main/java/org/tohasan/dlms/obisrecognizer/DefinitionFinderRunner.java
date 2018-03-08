@@ -3,11 +3,11 @@ package org.tohasan.dlms.obisrecognizer;
 import com.sun.media.sound.InvalidFormatException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.tohasan.dlms.obisrecognizer.entities.CosemDefinition;
+import org.tohasan.dlms.obisrecognizer.entities.ObisDefinition;
 import org.tohasan.dlms.obisrecognizer.entities.Obis;
-import org.tohasan.dlms.obisrecognizer.finder.CosemDefinitionFinder;
-import org.tohasan.dlms.obisrecognizer.reader.CosemReader;
-import org.tohasan.dlms.obisrecognizer.reader.impl.XlsCosemReader;
+import org.tohasan.dlms.obisrecognizer.finder.ObisDefinitionFinder;
+import org.tohasan.dlms.obisrecognizer.reader.ObisDefinitionReader;
+import org.tohasan.dlms.obisrecognizer.reader.impl.XlsObisDefinitionReader;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -25,9 +25,9 @@ public class DefinitionFinderRunner {
         LOGGER.info("obis: {}", obis);
 
         try (InputStream inputStream = new FileInputStream(DEFAULT_COSEM_OBJECT_DEFINITION_FILENAME)) {
-            CosemReader reader = new XlsCosemReader(inputStream);
-            List<CosemDefinition> definitions = reader.read();
-            CosemDefinitionFinder finder = new CosemDefinitionFinder(definitions);
+            ObisDefinitionReader reader = new XlsObisDefinitionReader(inputStream);
+            List<ObisDefinition> definitions = reader.read();
+            ObisDefinitionFinder finder = new ObisDefinitionFinder(definitions);
             List<String> descriptions = finder.findDescriptionsByObis(obis);
 
             for (String description : descriptions) {

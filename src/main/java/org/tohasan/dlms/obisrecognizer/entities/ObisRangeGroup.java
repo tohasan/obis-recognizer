@@ -14,7 +14,7 @@ import java.util.regex.Pattern;
  * author LehaSan
  * date 22.02.2018
  */
-public class CosemRangeGroup {
+public class ObisRangeGroup {
     private final static String RANGES_SEPARATOR = ",\\s*";
     private final static String RANGE_SEPARATOR = "-";
     private final static int RANGE_START_INDEX = 0;
@@ -27,21 +27,21 @@ public class CosemRangeGroup {
     private String idRange;
     private String description = "";
     private List<Integer> ids = null;
-    private Map<String, List<CosemGroupDescription>> descriptionDictionary = new HashMap<>();
+    private Map<String, List<ObisGroupDescription>> descriptionDictionary = new HashMap<>();
 
-    public CosemRangeGroup(String idRange, String description) {
+    public ObisRangeGroup(String idRange, String description) {
         this.idRange = idRange;
         this.description = description;
     }
 
-    public CosemRangeGroup(String idRange) {
+    public ObisRangeGroup(String idRange) {
         this.idRange = idRange;
     }
 
-    public CosemRangeGroup(
+    public ObisRangeGroup(
         String idRange,
         String description,
-        Map<String, List<CosemGroupDescription>> descriptionDictionary
+        Map<String, List<ObisGroupDescription>> descriptionDictionary
     ) {
         this.idRange = idRange;
         this.description = description;
@@ -113,8 +113,8 @@ public class CosemRangeGroup {
     }
 
     private String getDescriptionFromDictionary(int groupId) {
-        List<CosemGroupDescription> descriptions = this.descriptionDictionary.get(this.description);
-        for (CosemGroupDescription groupDescription : descriptions) {
+        List<ObisGroupDescription> descriptions = this.descriptionDictionary.get(this.description);
+        for (ObisGroupDescription groupDescription : descriptions) {
             if (groupDescription.getGroupId() == groupId) {
                 return groupDescription.getDescription();
             }
@@ -142,7 +142,7 @@ public class CosemRangeGroup {
 
     @Override
     public String toString() {
-        return "CosemRangeGroup{" +
+        return "ObisRangeGroup{" +
             "idRange=[" + idRange + "]" +
             ", description='" + description + '\'' +
             '}';

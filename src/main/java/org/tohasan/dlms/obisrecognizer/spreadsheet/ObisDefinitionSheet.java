@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-public class CosemSheet implements Iterable<CosemRow> {
+public class ObisDefinitionSheet implements Iterable<ObisDefinitionRow> {
     public final static int TYPE_ABSTRACT = 4;
     public final static int TYPE_ELECTRICITY = 5;
 
@@ -20,7 +20,7 @@ public class CosemSheet implements Iterable<CosemRow> {
 
     private Sheet sheet;
 
-    public CosemSheet(Sheet sheet) {
+    public ObisDefinitionSheet(Sheet sheet) {
         this.sheet = sheet;
     }
 
@@ -34,7 +34,7 @@ public class CosemSheet implements Iterable<CosemRow> {
     }
 
     @Override
-    public Iterator<CosemRow> iterator() {
-        return new CosemRowIterator(sheet.rowIterator());
+    public Iterator<ObisDefinitionRow> iterator() {
+        return new ObisDefinitionRowIterator(sheet.rowIterator());
     }
 }

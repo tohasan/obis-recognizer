@@ -2,16 +2,16 @@ package org.tohasan.dlms.obisrecognizer.spreadsheet;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
-import org.tohasan.dlms.obisrecognizer.entities.CosemVariable;
+import org.tohasan.dlms.obisrecognizer.entities.ObisVariable;
 
-class CosemCell {
+class ObisDefinitionCell {
     private final static String VARIABLE_KEY_VALUE_SEPARATOR = "\\s*=\\s*";
     private final static int VARIABLE_KEY_INDEX = 0;
     private final static int VARIABLE_VALUE_INDEX = 1;
 
     private Cell cell;
 
-    CosemCell(Cell cell) {
+    ObisDefinitionCell(Cell cell) {
         this.cell = cell;
     }
 
@@ -34,11 +34,11 @@ class CosemCell {
         }
     }
 
-    CosemVariable getVariable() {
+    ObisVariable getVariable() {
         String definition = this.getValue();
         String[] variableKeyValue = definition.split(VARIABLE_KEY_VALUE_SEPARATOR);
         String variableKey = variableKeyValue[VARIABLE_KEY_INDEX];
         String variableValue = variableKeyValue[VARIABLE_VALUE_INDEX];
-        return new CosemVariable(variableKey, variableValue);
+        return new ObisVariable(variableKey, variableValue);
     }
 }

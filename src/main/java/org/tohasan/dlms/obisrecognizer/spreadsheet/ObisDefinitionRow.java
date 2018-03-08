@@ -1,14 +1,14 @@
 package org.tohasan.dlms.obisrecognizer.spreadsheet;
 
 import org.apache.poi.ss.usermodel.Row;
-import org.tohasan.dlms.obisrecognizer.entities.CosemGroupDescription;
-import org.tohasan.dlms.obisrecognizer.entities.CosemVariable;
+import org.tohasan.dlms.obisrecognizer.entities.ObisGroupDescription;
+import org.tohasan.dlms.obisrecognizer.entities.ObisVariable;
 import org.tohasan.dlms.obisrecognizer.utils.StringUtils;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class CosemRow {
+public class ObisDefinitionRow {
     private final static String ROW_TYPE_COMMON = "com";
     private final static String ROW_TYPE_DEFINITION = "def";
     private final static String ROW_TYPE_DESCRIPTION = "N\\d+[A-F]";
@@ -38,7 +38,7 @@ public class CosemRow {
 
     private Row row;
 
-    CosemRow(Row row) {
+    ObisDefinitionRow(Row row) {
         this.row = row;
     }
 
@@ -66,21 +66,21 @@ public class CosemRow {
         return getCellValue(COL_INDEX_ROW_TYPE);
     }
 
-    public CosemRowType getType() {
+    public ObisDefinitionRowType getType() {
         String rowType = getRawType();
         if (rowType.equals(ROW_TYPE_COMMON)) {
-            return CosemRowType.COMMON;
+            return ObisDefinitionRowType.COMMON;
         } else if (rowType.matches(ROW_TYPE_DESCRIPTION)) {
-            return CosemRowType.DESCRIPTION;
+            return ObisDefinitionRowType.DESCRIPTION;
         } else if (rowType.equals(ROW_TYPE_DEFINITION)) {
-            return CosemRowType.DEFINITION;
+            return ObisDefinitionRowType.DEFINITION;
         } else {
-            return CosemRowType.DEFAULT;
+            return ObisDefinitionRowType.DEFAULT;
         }
     }
 
-    private CosemCell getCell(int cellIndex) {
-        return new CosemCell(row.getCell(cellIndex));
+    private ObisDefinitionCell getCell(int cellIndex) {
+        return new ObisDefinitionCell(row.getCell(cellIndex));
     }
 
     public String getCellValue(int cellIndex) {
@@ -88,21 +88,21 @@ public class CosemRow {
     }
 
     public String getDescriptionNumber() {
-        if (getType() != CosemRowType.DESCRIPTION) {
+        if (getType() != ObisDefinitionRowType.DESCRIPTION) {
             return "";
         }
         return DESCRIPTION_PREFIX + StringUtils.getSubstringByRegexp(getRawType(), DESCRIPTION_NUMBER_REGEXP);
     }
 
     private String getDescriptionGroup() {
-        if (getType() != CosemRowType.DESCRIPTION) {
+        if (getType() != ObisDefinitionRowType.DESCRIPTION) {
             return "";
         }
         return StringUtils.getSubstringByRegexp(getRawType(), DESCRIPTION_GROUP_NAME_REGEXP);
     }
 
-    public CosemVariable getDefinitionVariable() {
-        if (getType() != CosemRowType.DEFINITION) {
+    public ObisVariable getDefinitionVariable() {
+        if (getType() != ObisDefinitionRowType.DEFINITION) {
             return null;
         }
 
@@ -113,8 +113,8 @@ public class CosemRow {
         return row.getRowNum();
     }
 
-    public CosemGroupDescription getDescription() {
-        if (getType() != CosemRowType.DESCRIPTION) {
+    public ObisGroupDescription getDescription() {
+        if (getType() != ObisDefinitionRowType.DESCRIPTION) {
             return null;
         }
 
@@ -123,6 +123,6 @@ public class CosemRow {
 
         int descriptionId = Integer.parseInt(getCellValue(colIndexDescriptionId));
         String descriptionValue = getCellValue(colIndexDescriptionValue);
-        return new CosemGroupDescription(descriptionId, descriptionValue);
+        return new ObisGroupDescription(descriptionId, descriptionValue);
     }
 }

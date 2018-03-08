@@ -4,10 +4,10 @@ import org.apache.poi.ss.usermodel.Row;
 
 import java.util.Iterator;
 
-public class CosemRowIterator implements Iterator<CosemRow> {
+public class ObisDefinitionRowIterator implements Iterator<ObisDefinitionRow> {
     private Iterator<Row> iterator;
 
-    CosemRowIterator(Iterator<Row> iterator) {
+    ObisDefinitionRowIterator(Iterator<Row> iterator) {
         this.iterator = iterator;
     }
 
@@ -17,7 +17,7 @@ public class CosemRowIterator implements Iterator<CosemRow> {
     }
 
     @Override
-    public CosemRow next() {
-        return new CosemRow(iterator.next());
+    public ObisDefinitionRow next() {
+        return new ObisDefinitionRow(iterator.next());
     }
 }

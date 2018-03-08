@@ -1,10 +1,10 @@
 package org.tohasan.dlms.obisrecognizer.entities;
 
-public class CosemVariable {
+public class ObisVariable {
     private String name;
     private String value;
 
-    public CosemVariable(String name, String value) {
+    public ObisVariable(String name, String value) {
         this.name = name;
         this.value = value;
     }
