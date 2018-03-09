@@ -48,23 +48,6 @@ public class ObisRangeGroup {
         this.descriptionDictionary = descriptionDictionary;
     }
 
-    public String getIdRange() {
-        return idRange;
-    }
-
-    public void setIdRange(String idRange) {
-        this.idRange = idRange;
-        this.ids = null;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     private List<Integer> getIds() {
         if (ids == null) {
             ids = getRangeValues(idRange);
