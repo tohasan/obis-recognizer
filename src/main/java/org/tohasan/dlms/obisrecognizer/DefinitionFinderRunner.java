@@ -31,7 +31,7 @@ public class DefinitionFinderRunner {
             List<String> descriptions = finder.findDescriptionsByObis(obis);
 
             for (String description : descriptions) {
-                LOGGER.debug("obis {} description: {}", obis.getFullName(), description);
+                LOGGER.info("obis {} description: {}", obis.getFullName(), description);
             }
 
             if (descriptions.isEmpty()) {

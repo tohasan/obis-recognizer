@@ -126,7 +126,7 @@ public class ObisRangeGroup {
     @Override
     public String toString() {
         return "ObisRangeGroup{" +
-            "idRange=[" + idRange + "]" +
+            "idRange={" + idRange + "}" +
             ", description='" + description + '\'' +
             '}';
     }

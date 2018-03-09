@@ -4,12 +4,14 @@ import com.sun.media.sound.InvalidFormatException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * author LehaSan
  * date 22.02.2018
  */
 public class ObisDefinition {
+    private final static String GROUP_INDENT_ON_PRINT = "    ";
     private final static String DESCRIPTION_SEPARATOR = ", ";
     private final static int VALID_GROUP_COUNT = 6;
 
@@ -50,8 +52,12 @@ public class ObisDefinition {
 
     @Override
     public String toString() {
-        return "ObisDefinition{" +
-            "groups=" + groups +
-            '}';
+        String strGroups = groups.stream()
+                .map(obisRangeGroup -> GROUP_INDENT_ON_PRINT + obisRangeGroup.toString())
+                .collect(Collectors.joining("\n"));
+
+        return "ObisDefinition{\n" +
+                strGroups + "\n" +
+                "}";
     }
 }
