@@ -83,8 +83,6 @@ public class CliHelper {
         CommandLineParser parser = new DefaultParser();
         CommandLine commandLine = parser.parse(getOptions(), args);
 
-        // TODO: Изменять уровень логирования (verbose): https://gist.github.com/nkcoder/cd74919fd80594c56e09b448a2d1ba31
-
         FinderOptions finderOptions = new FinderOptions();
 
         finderOptions.setShouldPrintVersion(commandLine.hasOption(OPT_VERSION));
@@ -185,7 +183,6 @@ public class CliHelper {
                 .numberOfArgs(1)
                 .build();
 
-            // TODO: Read default filename from app.properties
             Option optObisFile = Option.builder("i")
                 .longOpt(OPT_OBIS_FILE)
                 .desc(String.format(
