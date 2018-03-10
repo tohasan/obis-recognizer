@@ -9,9 +9,36 @@ import java.util.List;
  */
 public class FinderOptions {
     private List<String> obisList = new ArrayList<>();
+    private boolean shouldPrintVersion;
+    private boolean shouldPrintHelp;
+    private boolean isVerbose;
     private String obisFile;
     private String definitionFile;
     private String outputFile;
+
+    public boolean isShouldPrintVersion() {
+        return shouldPrintVersion;
+    }
+
+    public void setShouldPrintVersion(boolean shouldPrintVersion) {
+        this.shouldPrintVersion = shouldPrintVersion;
+    }
+
+    public boolean isShouldPrintHelp() {
+        return shouldPrintHelp;
+    }
+
+    public void setShouldPrintHelp(boolean shouldPrintHelp) {
+        this.shouldPrintHelp = shouldPrintHelp;
+    }
+
+    public boolean isVerbose() {
+        return isVerbose;
+    }
+
+    public void setVerbose(boolean verbose) {
+        isVerbose = verbose;
+    }
 
     public List<String> getObisList() {
         return obisList;

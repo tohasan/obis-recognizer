@@ -20,6 +20,7 @@
     <logger name="org.tohasan" level="DEBUG"/>
 
     <root level="INFO">
-        <appender-ref ref="FILE" />
+        <appender-ref ref="FILE"/>
+        <appender-ref ref="STDOUT"/>
     </root>
 </configuration>
